@@ -57,10 +57,18 @@ class ListaItens extends React.Component {
   }
 }
 
+class VisualizarItem extends React.Component {
+  render() {
+    return <div> Visualizar apenas um item</div>;
+  }
+}
+
 function App() {
   return (
     <Switch>
-      <Route path="/" component={ListaItens} />
+      <Route path="/" exact={true} component={ListaItens} />
+
+      <Route path="/visualizar/:id" component={VisualizarItem} />
     </Switch>
   );
 }
