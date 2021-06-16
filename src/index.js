@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./index.css";
 
 function CardItem(props) {
@@ -37,6 +38,7 @@ class ListaItens extends React.Component {
     const json = await request.json();
 
     //2. Atualiza o estado
+
     this.setState({
       itens: json,
     });
@@ -44,6 +46,7 @@ class ListaItens extends React.Component {
 
   render() {
     //3. Renderiza utilizando a info que está no estado
+
     return (
       <div className="lista_itens">
         {this.state.itens.map((item, index) => (
@@ -55,12 +58,18 @@ class ListaItens extends React.Component {
 }
 
 function App() {
-  return <ListaItens />;
+  return (
+    <Switch>
+      <Route path="/" component={ListaItens} />
+    </Switch>
+  );
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
